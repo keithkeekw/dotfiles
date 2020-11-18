@@ -1,0 +1,109 @@
+# Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (c) 2017-present Sven Greb <code@svengreb.de>
+
+# Project:    Nord Alacritty
+# Version:    0.1.0
+# Repository: https://github.com/arcticicestudio/nord-alacritty
+# License:    MIT
+# References:
+#   https://github.com/alacritty/alacritty
+
+# Color from Nord
+colors:
+  primary:
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
+  cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  vi_mode_cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  selection:
+    text: CellForeground
+    background: '#4c566a'
+  search:
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    bar:
+      background: '#434c5e'
+      foreground: '#d8dee9'
+  normal:
+    black: '#3b4252'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#88c0d0'
+    white: '#e5e9f0'
+  bright:
+    black: '#4c566a'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#8fbcbb'
+    white: '#eceff4'
+  dim:
+    black: '#373e4d'
+    red: '#94545d'
+    green: '#809575'
+    yellow: '#b29e75'
+    blue: '#68809a'
+    magenta: '#8c738c'
+    cyan: '#6d96a5'
+    white: '#aeb3bb'
+
+# Custom Configuration
+# Windows Management
+window:
+  padding:
+    x: 5
+    y: 5
+
+  dynamic_title: true
+
+# Background Opacity
+background_opacity: 0.95
+selection:
+  save_to_clipboard: true
+
+# Cursor
+cursor:
+  style: Beam
+
+# Live config reload
+live_config_reload: true
+
+# Mouse Settings
+mouse:
+  double_click: {threshold: 300}
+  triple_click: {threshold: 300}
+  hide_when_typing: true
+  
+  url:
+    program: xdg-open
+    args: [brave]
+
+# Scrolling
+scrolling:
+  history: 10000
+  multiplier: 3
+
+key_bindings:
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance           }
+  - { key: V,        mods: Control|Shift,           action: Paste            }
+  - { key: C,        mods: Control|Shift,           action: Copy             }
+  - { key: F,        mods: Control|Shift,           action: SearchForward    }
+  - { key: B,        mods: Control|Shift,           action: SearchBackward   }
+  - { key: C,        mods: Control|Shift, mode: Vi, action: ClearSelection   }
+  - { key: Insert,   mods: Shift,                   action: PasteSelection   }
+  - { key: Key0,     mods: Control,                 action: ResetFontSize    }
+  - { key: Equals,   mods: Control,                 action: IncreaseFontSize }
+  - { key: Add,      mods: Control,                 action: IncreaseFontSize }
+  - { key: Subtract, mods: Control,                 action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,                 action: DecreaseFontSize }

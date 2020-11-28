@@ -68,13 +68,13 @@ window:
   dynamic_title: true
 
 # Background Opacity
-background_opacity: 0.95
+background_opacity: 1.0
 selection:
   save_to_clipboard: true
 
 # Cursor
 cursor:
-  style: Beam
+  style: Block
 
 # Live config reload
 live_config_reload: true
@@ -94,16 +94,3 @@ scrolling:
   history: 10000
   multiplier: 3
 
-key_bindings:
-  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance           }
-  - { key: V,        mods: Control|Shift,           action: Paste            }
-  - { key: C,        mods: Control|Shift,           action: Copy             }
-  - { key: F,        mods: Control|Shift,           action: SearchForward    }
-  - { key: B,        mods: Control|Shift,           action: SearchBackward   }
-  - { key: C,        mods: Control|Shift, mode: Vi, action: ClearSelection   }
-  - { key: Insert,   mods: Shift,                   action: PasteSelection   }
-  - { key: Key0,     mods: Control,                 action: ResetFontSize    }
-  - { key: Equals,   mods: Control,                 action: IncreaseFontSize }
-  - { key: Add,      mods: Control,                 action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,                 action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,                 action: DecreaseFontSize }

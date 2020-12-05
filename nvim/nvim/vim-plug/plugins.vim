@@ -10,14 +10,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'scrooloose/NERDTree'		    "File Explorer
 	Plug 'arcticicestudio/nord-vim'		" Nord Theme
 	Plug 'itchyny/lightline.vim'		" Status Line
-    Plug 'luochen1990/rainbow'          " Colorize all the brackets
     Plug 'junegunn/fzf.vim'             " File Finder
     Plug 'jiangmiao/auto-pairs'         " Insert or delete brackets, parens, quotes in pair.
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'mattn/emmet-vim'
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()					        " Initialize Plugins
 
-"Settings for luochen1990/rainbow
-let g:rainbow_active=1

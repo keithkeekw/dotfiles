@@ -65,10 +65,10 @@ window:
     x: 5
     y: 5
 
-  dynamic_title: true
+  dynamic_title: false 
 
 # Background Opacity
-background_opacity: 1.0
+background_opacity: 0.95
 selection:
   save_to_clipboard: true
 
@@ -94,3 +94,17 @@ scrolling:
   history: 10000
   multiplier: 3
 
+  # Font
+  font:
+          normal:
+                  family: Hack
+                  style: Regular
+          bold:
+                  family: Hack
+                  style: Bold
+          italic:
+                  family: Hack
+                  style: Italic
+
+env:
+        TERM: xterm-256color

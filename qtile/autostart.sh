@@ -1,2 +1,5 @@
 #!/bin/sh
-nitrogen --restore && dropbox && picom
+autorandr -c & 
+nitrogen --restore & 
+dropbox &
+picom --experimental-backend &

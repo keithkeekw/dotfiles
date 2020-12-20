@@ -26,7 +26,7 @@
 
 from typing import List  # noqa: F401
 
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook, extension
 from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -40,47 +40,103 @@ browser = "brave"
 
 keys = [
     # Switch between windows in current stack pane
-    Key([mod], "k", lazy.layout.down(),
+    Key([mod], "k",
+        lazy.layout.down(),
         desc="Move focus down in stack pane"),
-    Key([mod], "j", lazy.layout.up(),
+
+    Key([mod], "j",
+        lazy.layout.up(),
         desc="Move focus up in stack pane"),
 
     # Move windows up or down in current stack
-    Key([mod, "control"], "k", lazy.layout.shuffle_down(),
+    Key([mod, "control"], "k",
+        lazy.layout.shuffle_down(),
         desc="Move window down in current stack "),
-    Key([mod, "control"], "j", lazy.layout.shuffle_up(),
+
+    Key([mod, "control"], "j",
+        lazy.layout.shuffle_up(),
         desc="Move window up in current stack "),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next(),
+    Key([mod], "space",
+        lazy.layout.next(),
         desc="Switch window focus to other pane(s) of stack"),
 
     # Swap panes of split stack
-    Key([mod, "shift"], "space", lazy.layout.rotate(),
+    Key([mod, "shift"], "space",
+        lazy.layout.rotate(),
         desc="Swap panes of split stack"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
+    Key([mod, "shift"], "Return",
+        lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
+
+    Key([mod], "Return",
+        lazy.spawn(terminal),
+        desc="Launch terminal"),
 
     ## MondaTall
-    Key([mod, "control"], "i", lazy.layout.grow()),
-    Key([mod, "control"], "o", lazy.layout.shrink()),
-    Key([mod, "control"], "p", lazy.layout.normalize()),
+    Key([mod, "control"], "i",
+        lazy.layout.grow()),
+
+    Key([mod, "control"], "o",
+        lazy.layout.shrink()),
+
+    Key([mod, "control"], "p",
+        lazy.layout.normalize()),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "Tab",
+        lazy.next_layout(),
+        desc="Toggle between layouts"),
 
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
-    Key([mod], "r", lazy.spawncmd(),
+    # Window Controls
+    Key([mod, "shift"], "q",
+        lazy.window.kill(),
+        desc="Kill focused window"),
+
+    Key([mod, "control"], "r",
+        lazy.restart(),
+        desc="Restart qtile"),
+
+    Key([mod, "control"], "q",
+        lazy.shutdown(),
+        desc="Shutdown qtile"),
+
+    Key([mod], "r",
+        lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
+
+    # Application: SUPER + ALT
+
+    Key([mod, "mod1"], "b",
+        lazy.spawn(browser),
+        desc="Launch Browser"),
+
+    Key([mod, "mod1"], "f",
+        lazy.spawn(terminal + " -e ranger"),
+        desc="Launch ranger"),
+
+    Key([mod, "mod1"], "m",
+        lazy.spawn(terminal + " -e tuner"),
+        desc="Launch tuner"),
+
+    Key([mod, "mod1"], "r", lazy.run_extension(extension.DmenuRun(
+        dmenu_prompt=">",
+        foreground='#D8DEE9',
+        background='#3B4252',
+        selected_background="#EBCB8B",
+        selected_foreground="#2E3440",
+        fontsize= 12.5
+    ))),
+
+    Key([mod, "mod1"], "l",
+        lazy.spawn(terminal + " -e slock"),
+        desc="Lock the screen")
 ]
 
 groups = [Group(i) for i in "1234"]
@@ -88,11 +144,13 @@ groups = [Group(i) for i in "1234"]
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
+        Key([mod], i.name,
+            lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
+        Key([mod, "shift"], i.name,
+            lazy.window.togroup(i.name, switch_group=True),
             desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
@@ -100,10 +158,10 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 ### LAYOUT THEME ###
-layout_theme = {"border_width":1,
-                "margin": 6,
+layout_theme = {"border_width":2,
+                "margin": 10,
                 "border_focus":'EBCB8B',
-                "border_normal": '5E81AC'}
+                "border_normal": '2E3440'}
 
 
 layouts = [
@@ -126,7 +184,9 @@ layouts = [
 widget_defaults = dict(
     font='sans',
     fontsize=12,
-    padding=3,
+    padding=0,
+    foreground='#D8DEE9',
+    background='#3B4252',
 )
 extension_defaults = widget_defaults.copy()
 
@@ -134,24 +194,158 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Sep(foreground="#3B4252", padding=7),
-                widget.GroupBox(),
-                widget.Sep(foreground="#3B4252", padding=7),
+                widget.Sep(
+                    foreground="#3B4252",
+                    padding=7
+                ),
+
+                widget.GroupBox(
+                    active="#BF616A",
+                    inactive="#D8DEE9",
+                    highlight_method="line",
+                    rounded= False,
+                    highlight_color="#EBCB8B",
+                    this_current_screen_border="#D08770",
+                    margin_y=5
+                ),
+
+                widget.Sep(
+                    foreground="#3B4252",
+                    padding=10
+                ),
+
                 widget.Prompt(),
+
+                widget.Sep(
+                    foreground="#3B4252",
+                    padding=20
+                ),
+
                 widget.WindowName(),
+
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.CurrentLayout(),
-                widget.Clock(format='%a, %I:%M %p'),
-                widget.Systray(),
-                widget.Sep(foreground="#3B4252", padding=7)
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    foreground="#EBCB8B",
+                    padding=0
+                ),
+
+                widget.CheckUpdates(
+                    update_interval=1800,
+                    color_have_updates="#BF616A",
+                    color_no_updates="#2E3440",
+                    foreground="#2E3440",
+                    background="#EBCB8B",
+                    display_format="{updates}",
+                    no_update_string="n/a",
+                    mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(terminal+ ' -e sudo pacman -Syu')}
+                ),
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    foreground="#A3BE8C",
+                    background="#EBCB8B",
+                    padding=0
+                ),
+
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                    foreground="#2E3440",
+                    background="#A3BE8C",
+                    scale = 0.6,
+                    padding=3
+                ),
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    background="#A3BE8C",
+                    foreground="#3B4252",
+                    padding=0
+                ),
+
+                widget.Memory(
+                    background="#3B4252",
+                    foreground="#D8DEE9",
+                     mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(terminal+ ' -e gtop')},
+                    format="{MemUsed}M / {MemTotal}M",
+                    padding=0
+                ),
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    background="#3B4252",
+                    foreground="#4c566A",
+                    padding=0
+                ),
+
+                widget.Battery(
+                    background="#4C566A",
+                    foreground="#D8DEE9",
+                    format="Batt: {percent:2.0%}",
+                    padding=0
+                ),
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    background="#4C566A",
+                    foreground="#3b4252",
+                    padding=0
+                ),
+
+                widget.Wlan(
+                    background="#3B4252",
+                    foreground="#D8DEE9",
+                    interface='wlp0s20f3',
+                    format='WLAN: {essid}',
+                    padding=0,
+                    mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(terminal+ ' -e nmtui')}
+                ),
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    background="#3B4252",
+                    foreground="#4C566A",
+                    padding=0
+                ),
+
+                widget.Clock(
+                    format='%a, %I:%M %p',
+                    foreground="#D8DEE9",
+                    background="#4c566A"
+                ),
+
+                widget.TextBox(
+                    text="◥",
+                    fontsize= 47,
+                    foreground="#3B4252",
+                    background="#4C566A",
+                    padding=0
+                ),
+
+                widget.Systray(
+                    padding=0,
+                    background="#3B4252"
+                ),
+
+                widget.Sep(
+                    foreground="#3B4252",
+                    background="#3B4252",
+                    padding=7
+                )
             ],
-            24,
-            background='#3B4252',
+            22,
         ),
     ),
 ]

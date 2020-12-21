@@ -136,7 +136,11 @@ keys = [
 
     Key([mod, "mod1"], "l",
         lazy.spawn(terminal + " -e slock"),
-        desc="Lock the screen")
+        desc="Lock the screen"),
+
+    Key([mod, "mod1"], "v",
+        lazy.spawn(terminal + " -e alsamixer"),
+        desc="Launch alsamixer")
 ]
 
 groups = [Group(i) for i in "1234"]
@@ -265,9 +269,30 @@ screens = [
                 ),
 
                 widget.TextBox(
-                    text="◥",
-                    fontsize= 47,
+                    text="◥", fontsize= 47,
                     background="#A3BE8C",
+                    foreground="#4C566A",
+                    padding=0
+                ),
+
+                widget.TextBox(
+                    text="Vol: ",
+                    fontsize= 12,
+                    background="#4C566A",
+                    foreground="#D8DEE9",
+                    padding=0
+                ),
+
+                widget.Volume(
+                    background="#4C566A",
+                    foreground="#D8DEE9",
+                    padding=0,
+                    volume_app="alsamixer"
+                ),
+
+                widget.TextBox(
+                    text="◥", fontsize= 47,
+                    background="#4C566A",
                     foreground="#3B4252",
                     padding=0
                 ),
@@ -276,7 +301,7 @@ screens = [
                     background="#3B4252",
                     foreground="#D8DEE9",
                      mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(terminal+ ' -e gtop')},
-                    format="{MemUsed}M / {MemTotal}M",
+                    format="Mem: {MemUsed}M / {MemTotal}M",
                     padding=0
                 ),
 
@@ -288,10 +313,18 @@ screens = [
                     padding=0
                 ),
 
+                widget.TextBox(
+                    text="Battery: ",
+                    fontsize= 12,
+                    background="#4C566A",
+                    foreground="#D8DEE9",
+                    padding=0
+                ),
+
                 widget.Battery(
                     background="#4C566A",
                     foreground="#D8DEE9",
-                    format="Batt: {percent:2.0%}",
+                    format="{percent:2.0%}",
                     padding=0
                 ),
 
@@ -336,6 +369,7 @@ screens = [
 
                 widget.Systray(
                     padding=0,
+                    foreground="#3B4252",
                     background="#3B4252"
                 ),
 

@@ -1,5 +1,7 @@
 #!/bin/sh
-autorandr -c & 
-nitrogen --restore & 
-dropbox &
 picom --experimental-backend &
+lxsession-default &
+autorandr -c & 
+blueman-applet &
+dropbox &
+nitrogen --restore & 

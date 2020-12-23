@@ -36,7 +36,7 @@ import subprocess
 mod = "mod4"
 #terminal = guess_terminal()
 terminal = "termite"
-browser = "brave"
+browser = "firefox"
 
 keys = [
     # Switch between windows in current stack pane
@@ -78,6 +78,11 @@ keys = [
     Key([mod], "Return",
         lazy.spawn(terminal),
         desc="Launch terminal"),
+
+    Key([mod, "shift"], "Return",
+        # lazy.spawn("dmenu_run -p 'Run: '"),
+        lazy.spawn("rofi -show drun -config ~/.config/rofi/themes/nord.rasi -display-drun \"Run: \" -drun-display-format \"{name}\""),
+        desc='Run Launcher'),
 
     ## MondaTall
     Key([mod, "control"], "i",
@@ -125,14 +130,26 @@ keys = [
         lazy.spawn(terminal + " -e tuner"),
         desc="Launch tuner"),
 
-    Key([mod, "mod1"], "r", lazy.run_extension(extension.DmenuRun(
-        dmenu_prompt=">",
-        foreground='#D8DEE9',
-        background='#3B4252',
-        selected_background="#EBCB8B",
-        selected_foreground="#2E3440",
-        fontsize= 12.5
-    ))),
+    Key([mod, "mod1"], "n",
+        lazy.spawn(terminal + " -e newsboat"),
+        desc="Launch newsboat"),
+
+    Key([mod, "mod1"], "y",
+        lazy.spawn(terminal + " -e pipe-viewer"),
+        desc="Launch Terminal YT Viewer"),
+
+    Key([mod, "mod1"], "q",
+        lazy.spawn("qutebrowser"),
+        desc="Launch qutebrowser"),
+
+#    Key([mod, "mod1"], "r", lazy.run_extension(extension.DmenuRun(
+#        dmenu_prompt=">",
+#       foreground='#D8DEE9',
+#       background='#3B4252',
+#       selected_background="#EBCB8B",
+#       selected_foreground="#2E3440",
+#        fontsize= 12.5
+#    ))),
 
     Key([mod, "mod1"], "l",
         lazy.spawn(terminal + " -e slock"),
@@ -162,7 +179,7 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 ### LAYOUT THEME ###
-layout_theme = {"border_width":2,
+layout_theme = {"border_width":3,
                 "margin": 10,
                 "border_focus":'EBCB8B',
                 "border_normal": '2E3440'}
@@ -173,11 +190,25 @@ layouts = [
     layout.Floating(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
+    layout.MonadWide(**layout_theme),
+    # layout.TreeTab(
+    #    font = "Ubuntu",
+    #    fontsize = 10,
+    #    sections = ["FIRST", "SECOND"],
+    #    section_fontsize = 11,
+    #    bg_color = "141414",
+    #    active_bg = "90C435",
+    #    active_fg = "000000",
+    #    inactive_bg = "384323",
+    #    inactive_fg = "a0a0a0",
+    #    padding_y = 5,
+    #    section_top = 10,
+    #    panel_width = 320
+    #     ),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -286,6 +317,8 @@ screens = [
                 widget.Volume(
                     background="#4C566A",
                     foreground="#D8DEE9",
+                    volume_up_command ="amixer set 'Master' 2%+",
+                    volume_down_command ="amixer set 'Master' 2%-",
                     padding=0,
                     volume_app="alsamixer"
                 ),

@@ -1,4 +1,13 @@
 auto-reload yes
 reload-threads 100
 macro m set browser "/usr/bin/mpv %u"; open-in-browser ; set browser "/usr/bin/brave %u"
-macro b set browser "/usr/bin/brave %u"; open-in-browser ; set browser "/usr/bin/brave %u"
+macro b set browser "/usr/bin/qutebrowser %u"; open-in-browser ; set browser "/usr/bin/brave %u"
+
+bind-key k up
+bind-key j down
+bind-key h prev
+bind-key l next
+bind-key c cmdline
+
+color info        black   yellow    bold
+color listfocus   white   blue      

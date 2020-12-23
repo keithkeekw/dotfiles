@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  statusbar.show:
-    global: always
+  content.notifications:
+    https://www.reddit.com: true

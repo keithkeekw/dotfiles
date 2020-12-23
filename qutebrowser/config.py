@@ -329,3 +329,13 @@ c.colors.tabs.pinned.selected.even.bg = '#2E3440'
 # color).
 # Type: QtColor
 c.colors.webpage.bg = '#ECEFF4'
+
+# Binding for normal mode
+config.bind('M', 'hint links spawn mpv {hint-url}')
+config.bind('xb', 'config-cycle statusbar.show always never')
+config.bind('xt', 'config-cycle tabs.show always never')
+config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+
+# Setting dark mode
+config.set("colors.webpage.darkmode.enabled", True)
+

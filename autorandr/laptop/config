@@ -1,0 +1,11 @@
+output DP-1
+off
+output HDMI-1
+off
+output eDP-1
+crtc 0
+mode 2160x1440
+pos 0x0
+primary
+rate 60.00
+transform 0.750000,0.000000,0.000000,0.000000,0.750000,0.000000,0.000000,0.000000,1.000000

@@ -9,6 +9,7 @@ export ZSH="/home/keithkeekw/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="bureau"
+#ZSH_THEME="minimal"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,11 +85,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+ else
+  export EDITOR='nano'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -101,4 +102,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="nano ~/.zshrc"
 alias zshreload="source ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sshpi="ssh pi@192.168.10.105"
+alias vw="nvim -c VimwikiIndex"
+alias qn="nvim ~/Dropbox/Notes/Notes.md"
+alias td="nvim ~/Dropbox/Notes/TaskList.md"
+# Custom Settings
+export EDITOR=nvim # Change default editor to nvim
+export TERM=xterm-color

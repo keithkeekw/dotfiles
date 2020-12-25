@@ -81,7 +81,7 @@ keys = [
 
     Key([mod, "shift"], "Return",
         # lazy.spawn("dmenu_run -p 'Run: '"),
-        lazy.spawn("rofi -show drun -config ~/.config/rofi/themes/nord.rasi -display-drun \"Run: \" -drun-display-format \"{name}\""),
+        lazy.spawn("rofi -show drun -display-drun \"Run: \" -drun-display-format \"{name}\""),
         desc='Run Launcher'),
 
     ## MondaTall
@@ -98,6 +98,25 @@ keys = [
     Key([mod], "Tab",
         lazy.next_layout(),
         desc="Toggle between layouts"),
+
+    # Hardware Controls
+    Key([], "XF86AudioLowerVolume",
+        lazy.spawn("amixer set 'Master' 5%-"),
+        desc="Reduce Volume"),
+
+    Key([], "XF86AudioRaiseVolume",
+        lazy.spawn("amixer set 'Master' 5%+"),
+        desc="Increase Volume"),
+
+    Key([], "XF86AudioMute",
+        lazy.spawn("amixer set 'Master' toggle"),
+        desc="Mute Volume"),
+
+    Key([], "XF86MonBrightnessUp",
+        lazy.spawn("brightnessctl set +10%")),
+
+    Key([], "XF86MonBrightnessDown",
+        lazy.spawn("brightnessctl set 10%-")),
 
     # Window Controls
     Key([mod, "shift"], "q",
@@ -138,7 +157,7 @@ keys = [
         lazy.spawn(terminal + " -e pipe-viewer"),
         desc="Launch Terminal YT Viewer"),
 
-    Key([mod, "mod1"], "q",
+    Key([mod, "mod1"], "i",
         lazy.spawn("qutebrowser"),
         desc="Launch qutebrowser"),
 
@@ -266,21 +285,21 @@ screens = [
                 ),
 
                 widget.TextBox(
-                    text="◥",
-                    fontsize= 47,
-                    foreground="#EBCB8B",
-                    padding=0
+                   text="◥",
+                   fontsize= 47,
+                   foreground="#EBCB8B",
+                   padding=0
                 ),
 
                 widget.CheckUpdates(
                     update_interval=1800,
-                    color_have_updates="#BF616A",
-                    color_no_updates="#2E3440",
-                    foreground="#2E3440",
+                    colour_have_updates="#BF616A",
+                    colour_no_updates="#2E3440",
+                    foreground="#BF616A",
                     background="#EBCB8B",
-                    display_format="{updates}",
-                    no_update_string="n/a",
-                    mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(terminal+ ' -e sudo pacman -Syu')}
+                    no_update_string="Updated!",
+                    display_format="📦: {updates}",
+                    custom_command="checkupdates"
                 ),
 
                 widget.TextBox(

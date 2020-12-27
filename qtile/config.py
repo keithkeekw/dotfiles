@@ -157,6 +157,18 @@ keys = [
         lazy.spawn(terminal + " -e pipe-viewer"),
         desc="Launch Terminal YT Viewer"),
 
+    Key([mod, "mod1"], "r",
+        lazy.spawn(terminal + " -e tuir"),
+        desc="Launch Terminal UI Reddit"),
+
+    Key([mod, "mod1"], "t",
+        lazy.spawn(terminal + " -e rainbowstream"),
+        desc="Launch Terminal Twitter - Rainbowstream"),
+
+    Key([mod, "mod1"], "w",
+        lazy.spawn(terminal + " -e whatscli"),
+        desc="Launch Terminal Whatsapp"),
+
     Key([mod, "mod1"], "i",
         lazy.spawn("qutebrowser"),
         desc="Launch qutebrowser"),
@@ -206,10 +218,10 @@ layout_theme = {"border_width":3,
 
 layouts = [
     layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
     layout.Floating(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
-    layout.MonadWide(**layout_theme),
     # layout.TreeTab(
     #    font = "Ubuntu",
     #    fontsize = 10,

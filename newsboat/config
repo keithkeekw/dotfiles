@@ -1,7 +1,7 @@
 auto-reload yes
 reload-threads 100
-macro m set browser "/usr/bin/mpv %u"; open-in-browser ; set browser "/usr/bin/brave %u"
-macro b set browser "/usr/bin/qutebrowser %u"; open-in-browser ; set browser "/usr/bin/brave %u"
+macro m set browser "/usr/bin/mpv -fs %u"; open-in-browser ; set browser "/usr/bin/firefox %u"
+macro b set browser "/usr/bin/qutebrowser %u"; open-in-browser ; set browser "/usr/bin/firefox %u"
 
 bind-key k up
 bind-key j down

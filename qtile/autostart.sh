@@ -3,5 +3,5 @@ picom --experimental-backend &
 lxsession-default &
 blueman-applet &
 dropbox &
-nitrogen --restore & 
-autorandr -c  
+autorandr -c &
+nitrogen --restore --set-scaled 

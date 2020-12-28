@@ -1,0 +1,22 @@
+colors:
+  body: none
+  date: GREEN
+  tags: none
+  title: none
+default_hour: 9
+default_minute: 0
+editor: /usr/bin/nvim
+encrypt: false
+highlight: true
+indent_character: '|'
+journals:
+  default:
+    encrypt: true
+    journal: /home/keithkeekw/Documents/jrnl/Journal.txt
+  neovim:
+    journal: /home/keithkeekw/Documents/jrnl/Neovim.txt
+linewrap: 79
+tagsymbols: '@'
+template: false
+timeformat: '%Y-%m-%d %H:%M'
+version: v2.5

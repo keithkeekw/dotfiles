@@ -1,0 +1,6 @@
+configuration {
+	theme: "~/.config/rofi/themes/nord.rasi";
+	modi: "window,drun,run,ssh,file-browser,windowcd,combi,keys";
+	show-icons: true;
+	combi-modi: "window,drun,ssh";
+}

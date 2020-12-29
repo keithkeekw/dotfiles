@@ -3,3 +3,16 @@ Tech
 search tech
 1
 18
+source
+q
+bookmark-cmd
+~/Scripts/newsboat-bookmark.sh
+bookmark-cmd
+bookmark-cmd
+bookmark-cmd
+bookmark-cmd
+bookmark
+%ui
+%u
+exec ~/Scripts/Figlet_Clock.sh
+exec vim

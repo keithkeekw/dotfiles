@@ -18,3 +18,7 @@ download-path "~/Podcasts"
 download-filename-format "%F-%t.%e"
 max-downloads 3
 player mpv
+
+bookmark-cmd "~/Scripts/newsboat-bookmark.sh"
+bookmark-interactive yes
+bookmark-autopilot yes

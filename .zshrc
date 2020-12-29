@@ -100,12 +100,15 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nano ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias zshreload="source ~/.zshrc"
 alias sshpi="ssh pi@192.168.10.105"
 alias vw="nvim -c VimwikiIndex"
 alias qn="nvim ~/Dropbox/Notes/Notes.md"
 alias td="nvim ~/Dropbox/Notes/TaskList.md"
+alias bm="nvim ~/Dropbox/Notes/Bookmarked.md"
+alias nv="nvim"
+
 # Custom Settings
 export EDITOR=nvim # Change default editor to nvim
 export TERM=xterm-color

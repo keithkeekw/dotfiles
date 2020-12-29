@@ -141,6 +141,10 @@ keys = [
         lazy.spawn(browser),
         desc="Launch Browser"),
 
+    Key([mod, "mod1"], "g",
+        lazy.spawn("geary"),
+        desc="Launch email client"),
+
     Key([mod, "mod1"], "f",
         lazy.spawn(terminal + " -e ranger"),
         desc="Launch ranger"),

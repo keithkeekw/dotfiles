@@ -37,8 +37,9 @@ font = Fira Code 12
 clickable_url = true
 browser = xdg-open
 scrollbar = off
-cursor_shape = block
+cursor_shape = ibeam
 allow_bold = true
 bold_is_bright = true
+cursor_blink = off
 
 export TERM=xterm-color

@@ -4,4 +4,4 @@ lxsession-default &
 blueman-applet &
 dropbox &
 autorandr -c &
-nitrogen --restore --set-scaled 
+nitrogen --restore --set-scaled

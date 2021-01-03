@@ -72,7 +72,7 @@ ENABLE_CORRECTION="true"
 plugins=(git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	autojump	
+  autojump
 )
 
 source $ZSH/oh-my-zsh.sh

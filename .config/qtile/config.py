@@ -169,10 +169,6 @@ keys = [
         lazy.spawn(terminal + " -e castero"),
         desc="Launch Terminal Podcast Player"),
 
-    Key([mod, "mod1"], "t",
-        lazy.spawn(terminal + " -e rainbowstream"),
-        desc="Launch Terminal Twitter - Rainbowstream"),
-
     Key([mod, "mod1"], "w",
         lazy.spawn(terminal + " -e whatscli"),
         desc="Launch Terminal Whatsapp"),

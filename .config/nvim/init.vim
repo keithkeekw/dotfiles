@@ -11,7 +11,7 @@ source $HOME/.config/nvim/themes/nord.vim
 source $HOME/.config/nvim/keys/mappings.vim
 
 " Plugin Settings
-source $HOME/.config/nvim/plug-config/vim-gitgutter.vim
+"source $HOME/.config/nvim/plug-config/vim-gitgutter.vim
 source $HOME/.config/nvim/plug-config/markdown-preview.vim
 source $HOME/.config/nvim/plug-config/vimwiki.vim
 source $HOME/.config/nvim/plug-config/rnvimr.vim

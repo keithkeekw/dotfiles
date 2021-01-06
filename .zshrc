@@ -9,7 +9,6 @@ export ZSH="/home/keithkeekw/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="bureau"
-#ZSH_THEME="minimal"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -31,7 +30,7 @@ ZSH_THEME="bureau"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=3
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -43,7 +42,7 @@ export UPDATE_ZSH_DAYS=3
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -63,15 +62,16 @@ ENABLE_CORRECTION="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
+ZSH_CUSTOM="/usr/share/zsh/"
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
   autojump
 )
 
@@ -86,9 +86,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
- else
-  export EDITOR='nano'
+   export EDITOR='vim'
+else
+   export EDITOR='mvim'
 fi
 
 # Compilation flags
@@ -100,15 +100,16 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias nv=nvim
 alias zshreload="source ~/.zshrc"
-alias sshpi="ssh pi@192.168.10.105"
+alias zshedit="nv ~/.zshrc"
 alias vw="nvim -c VimwikiIndex"
 alias qn="nvim ~/Dropbox/Notes/Notes.md"
 alias td="nvim ~/Dropbox/Notes/TaskList.md"
 alias bm="nvim ~/Dropbox/Notes/Bookmarked.md"
-alias nv="nvim"
 
 # Custom Settings
-export EDITOR=nvim # Change default editor to nvim
+export EDITOR=nvim
 export TERM=xterm-color

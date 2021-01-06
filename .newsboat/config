@@ -9,6 +9,7 @@ bind-key h prev
 bind-key l next
 bind-key c cmdline
 
+
 color info        black   yellow    bold
 color listfocus   white   blue      
 

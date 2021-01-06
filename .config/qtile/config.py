@@ -102,6 +102,19 @@ keys = [
     Key([mod, "control"], "p",
         lazy.layout.normalize()),
 
+    ## Column
+    Key([mod, "control"], "j",
+        lazy.layout.grow_down()),
+
+    Key([mod, "control"], "k",
+        lazy.layout.grow_up()),
+
+    Key([mod, "control"], "h",
+        lazy.layout.grow_left()),
+
+    Key([mod, "control"], "l",
+        lazy.layout.grow_right()),
+
     # Toggle between different layouts as defined below
     Key([mod], "Tab",
         lazy.next_layout(),

@@ -34,12 +34,15 @@ color15 = #eceff4
 
 [options]
 font = Fira Code 12
+hyperlinks = true
 clickable_url = true
 browser = xdg-open
 scrollbar = off
-cursor_shape = ibeam
+scrollback_lines = 10000
 allow_bold = true
 bold_is_bright = true
 cursor_blink = off
+cursor_shape = ibeam
+mouse_autohide = true
 
 export TERM=xterm-color

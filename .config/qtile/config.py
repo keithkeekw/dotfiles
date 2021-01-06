@@ -48,6 +48,14 @@ keys = [
         lazy.layout.up(),
         desc="Move focus up in stack pane"),
 
+    Key([mod], "h",
+        lazy.layout.left(),
+        desc="Move focus left in stack pane"),
+
+    Key([mod], "l",
+        lazy.layout.right(),
+        desc="Move focus right in stack pane"),
+
     # Move windows up or down in current stack
     Key([mod, "control"], "k",
         lazy.layout.shuffle_down(),
@@ -79,7 +87,7 @@ keys = [
         lazy.spawn(terminal),
         desc="Launch terminal"),
 
-    Key([mod, "shift"], "Return",
+    Key([mod, "shift"], "r",
         # lazy.spawn("dmenu_run -p 'Run: '"),
         lazy.spawn("rofi -show drun -display-drun \"Run: \" -drun-display-format \"{name}\""),
         desc='Run Launcher'),
@@ -226,6 +234,8 @@ layouts = [
     layout.Floating(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
+    layout.Columns(**layout_theme, num_columns=3),
+    #layout.VerticalTile(**layout_theme),
     # layout.TreeTab(
     #    font = "Ubuntu",
     #    fontsize = 10,
@@ -242,12 +252,10 @@ layouts = [
     #     ),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
-    # layout.Columns(),
     # layout.Matrix(),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
-    # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 

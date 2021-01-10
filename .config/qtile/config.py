@@ -35,8 +35,11 @@ import subprocess
 
 mod = "mod4"
 #terminal = guess_terminal()
+
+# Default Apps
 terminal = "termite"
 browser = "firefox"
+email = "geary"
 
 keys = [
     # Switch between windows in current stack pane
@@ -57,12 +60,20 @@ keys = [
         desc="Move focus right in stack pane"),
 
     # Move windows up or down in current stack
-    Key([mod, "control"], "k",
+    Key([mod, "shift"], "k",
         lazy.layout.shuffle_down(),
         desc="Move window down in current stack "),
 
-    Key([mod, "control"], "j",
+    Key([mod, "shift"], "j",
         lazy.layout.shuffle_up(),
+        desc="Move window up in current stack "),
+
+    Key([mod, "shift"], "h",
+        lazy.layout.shuffle_left(),
+        desc="Move window up in current stack "),
+
+    Key([mod, "shift"], "l",
+        lazy.layout.shuffle_right(),
         desc="Move window up in current stack "),
 
     # Switch window focus to other pane(s) of stack
@@ -163,7 +174,7 @@ keys = [
         desc="Launch Browser"),
 
     Key([mod, "mod1"], "g",
-        lazy.spawn("geary"),
+        lazy.spawn(email),
         desc="Launch email client"),
 
     Key([mod, "mod1"], "f",
